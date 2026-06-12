@@ -1,0 +1,334 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#3c241d;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px;
+overflow-x:hidden;
+}
+
+.bg-lines{
+position:fixed;
+inset:0;
+background:
+repeating-linear-gradient(
+90deg,
+rgba(255,255,255,.03),
+rgba(255,255,255,.03) 2px,
+transparent 2px,
+transparent 18px
+);
+pointer-events:none;
+}
+
+.container{
+width:100%;
+max-width:1400px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:stretch;
+position:relative;
+z-index:1;
+}
+
+/* ================= LEFT ================= */
+
+.left{
+display:flex;
+flex-direction:column;
+}
+
+.photo-card{
+height:80vh;
+overflow:hidden;
+border-radius:32px;
+background:#5a372d;
+box-shadow:
+0 20px 60px rgba(0,0,0,.35);
+transition:.5s;
+}
+
+.photo-card:hover{
+transform:translateY(-10px);
+box-shadow:
+0 35px 80px rgba(0,0,0,.45);
+}
+
+.photo-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:1s ease;
+}
+
+.photo-card:hover img{
+transform:scale(1.08);
+}
+
+.tag{
+margin-top:20px;
+display:inline-block;
+padding:14px 24px;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+border-radius:20px;
+color:white;
+font-weight:500;
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* ================= MUSIC CARD ================= */
+
+.music-card{
+height:100%;
+background:rgba(90,55,45,.95);
+padding:35px;
+border-radius:32px;
+backdrop-filter:blur(20px);
+box-shadow:
+0 20px 60px rgba(0,0,0,.35);
+display:flex;
+flex-direction:column;
+justify-content:center;
+transition:.5s;
+}
+
+.music-card:hover{
+transform:translateY(-10px);
+box-shadow:
+0 35px 80px rgba(0,0,0,.45);
+}
+
+.music-header{
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+.song-video{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:24px;
+display:block;
+margin-bottom:20px;
+box-shadow:
+0 15px 40px rgba(0,0,0,.3);
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* ================= VINYL ================= */
+
+.vinyl{
+width:130px;
+height:130px;
+border-radius:50%;
+background:#111;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-shrink:0;
+}
+
+.vinyl::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:50%;
+background:
+repeating-radial-gradient(
+circle,
+#222 0px,
+#222 3px,
+#111 3px,
+#111 8px
+);
+}
+
+.vinyl img{
+width:48px;
+height:48px;
+object-fit:cover;
+border-radius:50%;
+z-index:2;
+border:3px solid white;
+}
+
+.vinyl::after{
+content:"";
+position:absolute;
+width:10px;
+height:10px;
+border-radius:50%;
+background:white;
+z-index:3;
+}
+
+.spin{
+animation:spin 4s linear infinite;
+}
+
+@keyframes spin{
+from{
+transform:rotate(0deg);
+}
+to{
+transform:rotate(360deg);
+}
+}
+
+.music-header h2{
+font-size:28px;
+color:white;
+}
+
+.music-header span{
+color:#d8c0b7;
+}
+
+/* ================= TEXT ================= */
+
+h1{
+margin-top:25px;
+font-size:38px;
+line-height:1.2;
+color:white;
+font-weight:700;
+}
+
+.desc{
+margin-top:25px;
+font-size:16px;
+line-height:1.9;
+color:#e3d3cd;
+}
+
+/* ================= PLAYER ================= */
+
+.controls{
+margin-top:45px;
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+button{
+width:65px;
+height:65px;
+border:none;
+border-radius:50%;
+cursor:pointer;
+font-size:20px;
+background:white;
+color:#3c241d;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.12);
+box-shadow:
+0 10px 30px rgba(255,255,255,.3);
+}
+
+#progress{
+flex:1;
+height:6px;
+cursor:pointer;
+accent-color:white;
+}
+
+.time{
+color:white;
+font-size:14px;
+min-width:45px;
+text-align:center;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+.photo-card{
+min-height:500px;
+}
+
+.music-card{
+padding:35px;
+}
+
+h1{
+font-size:32px;
+}
+
+.music-header{
+flex-direction:column;
+text-align:center;
+}
+
+.controls{
+flex-wrap:wrap;
+}
+
+}
+
+.music-header{
+flex-wrap:wrap;
+}
+
+.song-video:hover{
+transform:scale(1.01);
+transition:.4s;
+}
+
+.song-video{
+position:relative;
+overflow:hidden;
+}
+
+.song-video::after{
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,.4),
+transparent
+);
+}
+
+.container{
+height:calc(100vh - 80px);
+}
+
+.left,
+.right{
+height:100%;
+}
+
+.music-card,
+.photo-card{
+height:100%;
+}
+
+#prevBtn,
+#nextBtn{
+width:55px;
+height:55px;
+font-size:18px;
+}
